@@ -36,11 +36,24 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			sendText(sender, text.substring(0, 100) + ", how can i help you ?")
+			//sendText(sender, text.substring(0, 100) + ", how can i help you ?")
+			decideMessage(sender, text)
 		}
 	}
 	res.sendStatus(200)
 })
+
+function decideMessage(sender, text1) {
+	let text = text1.toLowerCase()
+	if (text.includes("hi")) {
+		sendText(sender, "Hello M****F*** !!")
+
+	} else if (text.includes("winter")) {
+
+	} else {
+		sendText(sender, "How can i help you ?")
+	}
+}
 
 function sendText(sender, text) {
 	let messageData = {text: text}
