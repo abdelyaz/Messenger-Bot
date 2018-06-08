@@ -37,13 +37,7 @@ app.post('/webhook/', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			//sendText(sender, text.substring(0, 100) + ", how can i help you ?")
-			//decideMessage(sender, text)
-
-			if (event.postback) {
-				let text = JSON.stringify(event.postback)
-				decideMessage(sender, text)
-				continue
-			}
+			decideMessage(sender, text)
 		}
 	}
 	res.sendStatus(200)
@@ -52,32 +46,12 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("hi") || text.includes("hello") ) {
-		sendText(sender, "Hello, Hope you doing good, how can I  ")
-		sendButtonMessage(sender, text)
+		sendText(sender, "Hello, Hope you doing good, how can I help you ? ")
 
 	} else if (text.includes("help")) {
 
 	} else {
 		sendText(sender, "How can i help you ?")
-	}
-}
-
-function sendButtonMessage(sender, text) {
-	let messageData = {
-		"attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"What do you want to do next?",
-        "buttons":[
-          {
-            "type":"web_url",
-            "url":"https://www.messenger.com",
-            "title":"Visit Messenger"
-          }
-        ]
-      }
-    }
 	}
 }
 
