@@ -45,7 +45,7 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
-	if (text.includes("hi")) {
+	if (text.includes("hi") || text.includes("hello") ) {
 		sendText(sender, "Hello M****F*** !!")
 
 	} else if (text.includes("winter")) {
