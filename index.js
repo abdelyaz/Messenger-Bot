@@ -52,7 +52,7 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("hi") || text.includes("hello") ) {
-		//sendText(sender, "Hello, Hope you doing good, how can I  ")
+		sendText(sender, "Hello, Hope you doing good, how can I  ")
 		sendButtonMessage(sender, text)
 
 	} else if (text.includes("help")) {
@@ -79,15 +79,11 @@ function sendButtonMessage(sender, text) {
       }
     }
 	}
-	sendRequest(sender, messageData)
 }
 
 
 function sendText(sender, text) {
 	let messageData = {text: text}
-}
-
-function sendRequest(sender, messageData) {
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
@@ -104,7 +100,6 @@ function sendRequest(sender, messageData) {
 		}
 	})
 }
-
 app.listen(app.get('port'), function() {
 	console.log("running: port")
 })
