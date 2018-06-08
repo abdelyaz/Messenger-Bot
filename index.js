@@ -53,7 +53,7 @@ function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("hi") || text.includes("hello") ) {
 		//sendText(sender, "Hello, Hope you doing good, how can I  ")
-		sendButtonMessage(sender)
+		sendButtonMessage(sender, text)
 
 	} else if (text.includes("help")) {
 
