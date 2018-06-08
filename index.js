@@ -37,7 +37,13 @@ app.post('/webhook/', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			//sendText(sender, text.substring(0, 100) + ", how can i help you ?")
-			decideMessage(sender, text)
+			//decideMessage(sender, text)
+
+			if (event.postback) {
+				let text = JSON.stringify(event.postback)
+				decideMessage(sender, text)
+				continue
+			}
 		}
 	}
 	res.sendStatus(200)
@@ -46,17 +52,42 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("hi") || text.includes("hello") ) {
-		sendText(sender, "Hello M****F*** !!")
+		//sendText(sender, "Hello, Hope you doing good, how can I  ")
+		sendButtonMessage(sender)
 
-	} else if (text.includes("winter")) {
+	} else if (text.includes("help")) {
 
 	} else {
 		sendText(sender, "How can i help you ?")
 	}
 }
 
+function sendButtonMessage(sender, text) {
+	let messageData = {
+		"attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to do next?",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://www.messenger.com",
+            "title":"Visit Messenger"
+          }
+        ]
+      }
+    }
+	}
+	sendRequest(sender, messageData)
+}
+
+
 function sendText(sender, text) {
 	let messageData = {text: text}
+}
+
+function sendRequest(sender, messageData) {
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
@@ -73,6 +104,7 @@ function sendText(sender, text) {
 		}
 	})
 }
+
 app.listen(app.get('port'), function() {
 	console.log("running: port")
 })
