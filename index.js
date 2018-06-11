@@ -111,7 +111,11 @@ function sendButtonBuy(sender, text) {
                 "type":"web_url",
                 "url":"https://www.smile.eu/en",
                 "title":"View Details"
-							}
+							},{
+                "type":"postback",
+                "title":"Check Other Products",
+                "payload":"other"
+              }
 						]
 					}
         ]
