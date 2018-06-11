@@ -55,7 +55,7 @@ function decideMessage(sender, text1) {
 		sendText(sender, "Hello !!")
 	} else {
 		sendText(sender, "Whaat ??")
-		sendRequest(sender, "What is you favorite season ?")
+		sendButtonMessage(sender, "What is you favorite season ?")
 	}
 }
 
