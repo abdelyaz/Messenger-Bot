@@ -52,7 +52,6 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("t-shirts")) {
-		sendText(sender, "Hello !!")
 		sendButtonBuy(sender, messageData)
 	} else {
 		sendButtonMessage(sender, "Would you like to :")
