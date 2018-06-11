@@ -105,26 +105,8 @@ let messageData = {
 			"buttons":[
 				{
 					"type":"payment",
-					"title":"But Button",
-					"payload":"DEVELOPER_DEFINED_PAYLOAD",
-					"payment_summary":{
-						"currency":"USD",
-						"payment_type":"FIXED_AMOUNT",
-						"is_test_payment" : true,
-						"merchant_name":"My Fake Business",
-						"requested_user_info":[
-							"shipping_address",
-							"contact_name",
-							"contact_phone",
-							"contact_email"
-						],
-						"price_list":[
-							{
-								"label":"subtotal",
-								"amount":"12.75"
-							}
-						]
-					}
+					"title":"Buy Button",
+					"payload":"buy button",
 				}
 			]
 		}
