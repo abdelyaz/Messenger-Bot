@@ -54,7 +54,7 @@ function decideMessage(sender, text1) {
 	if (text.includes("t-shirts")) {
 		sendButtonBuy(sender, 'T-shirts')
 	} else {
-		sendButtonMessage(sender, "Would you like to :")
+		sendButtonMessage(sender, "Would you like to see :")
 	}
 }
 
