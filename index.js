@@ -49,6 +49,9 @@ function decideMessage(sender, text1) {
 		sendText(sender, "T-shirt 1 : 19.96$ ")
 	} else if (text.includes("buy")) {
 		sendText(sender, "Would you please send us : Size, Color, Your name adn Shipping adress.")
+		if (text){
+			sendText(sender, "recieved ")
+		}
 	} else if (text.includes("available")) {
 		sendText(sender, "We still have 3 T-Shirt")
 	} else if (text) {
