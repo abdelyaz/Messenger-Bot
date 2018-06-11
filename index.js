@@ -54,7 +54,6 @@ function decideMessage(sender, text1) {
 	if (text.includes("hi")) {
 		sendText(sender, "Hello !!")
 	} else {
-		sendText(sender, "Whaat ??")
 		sendButtonMessage(sender, "What is you favorite season ?")
 	}
 }
@@ -72,7 +71,7 @@ function sendButtonMessage(sender, text) {
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"What do you want to do next?",
+        "text": text,
         "buttons":[
           {
             "type":"postback",
