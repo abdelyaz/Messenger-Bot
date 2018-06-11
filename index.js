@@ -34,11 +34,11 @@ app.post('/webhook/', function(req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
 		let sender = event.sender.id
-		if (event.message && event.message.text) {
-			let text = event.message.text
-			//sendText(sender, text.substring(0, 100) + ", how can i help you ?")
-			//decideMessage(sender, text)
-		}
+		// if (event.message && event.message.text) {
+		// 	let text = event.message.text
+		// 	sendText(sender, text.substring(0, 100) + ", how can i help you ?")
+		// 	decideMessage(sender, text)
+		// }
 
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
@@ -51,7 +51,7 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
-	if (text.includes("Hi")) {
+	if (text.includes("hi")) {
 		sendText(sender, "Hello !!")
 	} else {
 		sendText(sender, "Whaat ??")
