@@ -34,11 +34,11 @@ app.post('/webhook/', function(req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
 		let sender = event.sender.id
-		// if (event.message && event.message.text) {
-		// 	let text = event.message.text
-		// 	sendText(sender, text.substring(0, 100) + ", how can i help you ?")
-		// 	decideMessage(sender, text)
-		// }
+		if (event.message && event.message.text) {
+			let text = event.message.text
+			decideMessage(sender, text)
+			//sendText(sender, text.substring(0, 100) + ", how can i help you ?")
+		}
 
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
