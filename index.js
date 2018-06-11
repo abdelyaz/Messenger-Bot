@@ -51,8 +51,9 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
-	if (text.includes("hi")) {
+	if (text.includes("t-shirts")) {
 		sendText(sender, "Hello !!")
+		sendButtonBuy(sender, messageData)
 	} else {
 		sendButtonMessage(sender, "Would you like to :")
 	}
@@ -75,13 +76,18 @@ function sendButtonMessage(sender, text) {
         "buttons":[
           {
             "type":"postback",
-						"title":"Test a1",
-						"payload":"Test1"
+						"title":"T-shirts",
+						"payload":"t-shirts"
 					},
 					{
             "type":"postback",
-						"title":"Test 22",
-						"payload":"Test2"
+						"title":"Shoes",
+						"payload":"shoes"
+					},
+					{
+            "type":"postback",
+						"title":"Stickers",
+						"payload":"stickers"
           }
         ]
       }
@@ -89,6 +95,45 @@ function sendButtonMessage(sender, text) {
 	}
 	sendRequest(sender, messageData)
 }
+
+function sendButtonBuy(sender, messageData) {
+let messageData = {
+	"attachment":{
+		"type":"template",
+		"payload":{
+			"template_type":"button",
+			"text":"Try the buy button!",
+			"buttons":[
+				{
+					"type":"payment",
+					"title":"But Button",
+					"payload":"DEVELOPER_DEFINED_PAYLOAD",
+					"payment_summary":{
+						"currency":"USD",
+						"payment_type":"FIXED_AMOUNT",
+						"is_test_payment" : true,
+						"merchant_name":"My Fake Business",
+						"requested_user_info":[
+							"shipping_address",
+							"contact_name",
+							"contact_phone",
+							"contact_email"
+						],
+						"price_list":[
+							{
+								"label":"subtotal",
+								"amount":"12.75"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}
+sendRequest(sender, messageData)
+}
+
 
 function sendRequest(sender, messageData) {
 	request({
