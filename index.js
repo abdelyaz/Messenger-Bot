@@ -109,8 +109,8 @@ function sendButtonBuy(sender, text) {
 						"buttons":[
               {
                 "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
-                "title":"View Website"
+                "url":"https://www.smile.eu/en",
+                "title":"View Details"
 							}
 						]
 					}
