@@ -45,17 +45,17 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
-	if (text) {
-		sendText(sender, `Hello, how can I help you ?
-1 - Do you want to buy a t-shirt ?
-2 - Available Stock ?
-3 - A T-shirt Price ?`)
+	if (text.includes("price")) {
+		sendText(sender, "T-shirt 1 : 19.96$ ")
 	} else if (text.includes("buy")) {
 		sendText(sender, "Would you please send us : Size, Color, Your name adn Shipping adress.")
 	} else if (text.includes("available")) {
 		sendText(sender, "We still have 3 T-Shirt")
-	} else if (text.includes("price")) {
-		sendText(sender, "T-shirt 1 : 19.96$ ")
+	} else if (text) {
+		sendText(sender, `Hello, how can I help you ?
+1 - Do you want to buy a t-shirt ?
+2 - Available Stock ?
+3 - A T-shirt Price ?`)
 	}
 }
 
