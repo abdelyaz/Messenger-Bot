@@ -52,7 +52,7 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("t-shirts")) {
-		sendButtonMessage(sender, "OOk ")
+		sendButtonBuy(sender, 'T-shirts')
 	} else {
 		sendButtonMessage(sender, "Would you like to :")
 	}
@@ -95,7 +95,7 @@ function sendButtonMessage(sender, text) {
 	sendRequest(sender, messageData)
 }
 
-function sendButtonBuy(sender, messageData) {
+function sendButtonBuy(sender, text) {
 let messageData = {
 	"attachment":{
 		"type":"template",
@@ -103,7 +103,7 @@ let messageData = {
 			"template_type":"generic",
 			"elements":[
 				 {
-					"title":"Welcome!",
+					"title":text,
 					"image_url":"https://petersfancybrownhats.com/company_image.png",
 					"subtitle":"We have the right hat for everyone.",
 					"default_action": {
@@ -129,7 +129,7 @@ let messageData = {
 		}
 	}
 }
-sendRequest(sender)
+sendRequest(sender, messageData)
 }
 
 
