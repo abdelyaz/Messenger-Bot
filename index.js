@@ -37,7 +37,13 @@ app.post('/webhook/', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			//sendText(sender, text.substring(0, 100) + ", how can i help you ?")
+			//decideMessage(sender, text)
+		}
+
+		if (event.postback) {
+			let text = JSON.stringify(event.postback)
 			decideMessage(sender, text)
+			continue
 		}
 	}
 	res.sendStatus(200)
@@ -45,14 +51,47 @@ app.post('/webhook/', function(req, res) {
 
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
-	if (text.includes("price")) {
-		sendText(sender, "T-shirt 1 : 19.96$ ")
+	if (text.includes("Hi")) {
+		sendText(sender, "Hello !!")
+	} else {
+		sendText(sender, "Whaat ??")
+		sendRequest(sender, "What is you favorite season ?")
 	}
 }
 
 
 function sendText(sender, text) {
 	let messageData = {text: text}
+	sendRequest(sender, messageData)
+}
+
+
+function sendButtonMessage(sender, text) {
+	let messageData = {
+		"attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to do next?",
+        "buttons":[
+          {
+            "type":"postback",
+						"title":"Test 1",
+						"payload":"Test 1"
+					},
+					{
+            "type":"postback",
+						"title":"Test 2",
+						"payload":"Test 2"
+          }
+        ]
+      }
+    }
+	}
+	sendRequest(sender, messageData)
+}
+
+function sendRequest(sender, messageData) {
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
@@ -69,6 +108,8 @@ function sendText(sender, text) {
 		}
 	})
 }
+
+
 app.listen(app.get('port'), function() {
 	console.log("running: port")
 })
