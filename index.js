@@ -129,7 +129,16 @@ function sendButtonItem(sender, text) {
 }
 
 function sendButtonBuy(sender, text) {
-	let messageData = "Hhahaah"
+	let messageData = {
+		"attachment":{
+			"type":"template",
+      "payload":{
+        "template_type":"button",
+				"text":"Try the buy button!"
+			}
+		}
+
+	}
 	sendRequest(sender, messageData)
 }
 
