@@ -52,7 +52,7 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("t-shirts")) {
-		sendButtonBuy(sender)
+		sendButtonItem(sender)
 	} else if (text.includes("shoes")) {
 		sendButtonBuy(sender)
 	}
@@ -98,7 +98,7 @@ function sendButtonMessage(sender, text) {
 	sendRequest(sender, messageData)
 }
 
-function sendButtonBuy(sender, text) {
+function sendButtonItem(sender, text) {
 	let messageData = {
 		"attachment":{
       "type":"template",
@@ -128,6 +128,43 @@ function sendButtonBuy(sender, text) {
 	sendRequest(sender, messageData)
 }
 
+function sendButtonBuy(sender, text) {
+	let messageData = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Try the buy button!",
+        "buttons":[
+          {
+            "type":"payment",
+            "title":"But Button",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD",
+            "payment_summary":{
+              "currency":"USD",
+              "payment_type":"FIXED_AMOUNT",
+              "is_test_payment" : true,
+              "merchant_name":"My Fake Business",
+              "requested_user_info":[
+                "shipping_address",
+                "contact_name",
+                "contact_phone",
+                "contact_email"
+              ],
+              "price_list":[
+                {
+                  "label":"subtotal",
+                  "amount":"12.75"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+	}
+	sendRequest(sender, messageData)
+}
 
 function sendRequest(sender, messageData) {
 	request({
