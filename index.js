@@ -129,9 +129,8 @@ function sendButtonItem(sender, text) {
 }
 
 function sendButtonBuy(sender, text) {
-	console.log('Test ok !')
 	let messageData = {
-    "attachment":{
+		"attachment":{
       "type":"template",
       "payload":{
         "template_type":"button",
@@ -146,18 +145,6 @@ function sendButtonBuy(sender, text) {
               "payment_type":"FIXED_AMOUNT",
               "is_test_payment" : true,
               "merchant_name":"My Fake Business",
-              "requested_user_info":[
-                "shipping_address",
-                "contact_name",
-                "contact_phone",
-                "contact_email"
-              ],
-              "price_list":[
-                {
-                  "label":"subtotal",
-                  "amount":"12.75"
-                }
-              ]
             }
           }
         ]
