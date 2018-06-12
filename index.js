@@ -119,12 +119,6 @@ function sendButtonBuy(sender, text) {
                 "title":"Check Other Products",
                 "payload":"other"
               }
-						],
-						"price_list":[
-							{
-								"label":"Total",
-								"amount":"19.95$"
-							}
 						]
 					}
         ]
