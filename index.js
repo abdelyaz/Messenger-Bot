@@ -53,7 +53,10 @@ function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("t-shirts")) {
 		sendButtonBuy(sender)
-	} else {
+	} else if (text.includes("shoes")) {
+		sendButtonBuy(sender)
+	}
+	else {
 		sendButtonMessage(sender, "Would you like to see :")
 	}
 }
@@ -103,9 +106,9 @@ function sendButtonBuy(sender, text) {
         "template_type":"generic",
         "elements":[
           {
-            "title":"Welcome!",
+            "title": text,
             "image_url":"https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/26167488_139883043463219_5905871390861314564_n.jpg?_nc_cat=0&oh=87c6678977d536862c165456990810f7&oe=5BA635D3",
-						"subtitle":"We have the right hat for everyone.",
+						"subtitle":"We have the right t-shirts for all code lovers.",
 						"buttons":[
               {
                 "type":"web_url",
@@ -116,6 +119,12 @@ function sendButtonBuy(sender, text) {
                 "title":"Check Other Products",
                 "payload":"other"
               }
+						],
+						"price_list":[
+							{
+								"label":"subtotal",
+								"amount":"12.75"
+							}
 						]
 					}
         ]
