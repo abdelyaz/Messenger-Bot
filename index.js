@@ -129,6 +129,7 @@ function sendButtonItem(sender, text) {
 }
 
 function sendButtonBuy(sender, text) {
+	console.log('Test ok !')
 	let messageData = {
     "attachment":{
       "type":"template",
