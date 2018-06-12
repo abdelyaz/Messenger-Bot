@@ -122,8 +122,8 @@ function sendButtonBuy(sender, text) {
 						],
 						"price_list":[
 							{
-								"label":"<EX_SUBTOTAL>",
-								"amount":"<AMOUNT>"
+								"label":"Total",
+								"amount":"19.95$"
 							}
 						]
 					}
