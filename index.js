@@ -52,9 +52,11 @@ app.post('/webhook/', function(req, res) {
 function decideMessage(sender, text1) {
 	let text = text1.toLowerCase()
 	if (text.includes("t-shirts")) {
-		sendButtonItem(sender)
+		sendButtonTshirt(sender)
 	} else if (text.includes("shoes")) {
-		sendButtonBuy(sender)
+		sendButtonShoes(sender)
+	} else if (text.includes("stickers")) {
+		sendButtonStickers(sender)
 	}
 	else {
 		sendButtonMessage(sender, "Would you like to see :")
@@ -98,7 +100,7 @@ function sendButtonMessage(sender, text) {
 	sendRequest(sender, messageData)
 }
 
-function sendButtonItem(sender, text) {
+function sendButtonTshirt(sender, text) {
 	let messageData = {
 		"attachment":{
       "type":"template",
@@ -108,7 +110,7 @@ function sendButtonItem(sender, text) {
           {
             "title": "We have the right t-shirts for all code lovers.",
             "image_url":"https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/26167488_139883043463219_5905871390861314564_n.jpg?_nc_cat=0&oh=87c6678977d536862c165456990810f7&oe=5BA635D3",
-						"subtitle":"We have the right hat for everyone.",
+						"subtitle":"We have the right t-shirts for everyone.",
 						"buttons":[
               {
                 "type":"web_url",
@@ -128,45 +130,60 @@ function sendButtonItem(sender, text) {
 	sendRequest(sender, messageData)
 }
 
-function sendButtonBuy(sender, text) {
+function sendButtonShoes(sender, text) {
 	let messageData = {
 		"attachment":{
       "type":"template",
       "payload":{
-				"template_type":"generic",
-				"text":"Try the buy button!",
-				"elements":[
+        "template_type":"generic",
+        "elements":[
           {
-            "title": "We jkhkljhlk",
-            "image_url":"https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/26167488_139883043463219_5905871390861314564_n.jpg?_nc_cat=0&oh=87c6678977d536862c165456990810f7&oe=5BA635D3",
-						"subtitle":"We have the right hat for everyone.",
+            "title": "New arrival Shoes",
+            "image_url":"https://www.dhresource.com/albu_793519722_00-1.0x0/new-arrival-casual-shoes-men-leisure-boat.jpg",
+						"subtitle":"We have the right shoes for everyone.",
 						"buttons":[
-							{
-								"type":"payment",
-								"title":"But Button",
-								"payload":"DEVELOPER_DEFINED_PAYLOAD",
-								"payment_summary":{
-									"currency":"USD",
-									"payment_type":"FIXED_AMOUNT",
-									"is_test_payment" : true,
-									"merchant_name":"My Fake Business",
-									"requested_user_info":[
-										"shipping_address",
-										"contact_name",
-										"contact_phone",
-										"contact_email"
-									],
-									"price_list":[
-										{
-											"label":"subtotal",
-											"amount":"12.75"
-										}
-									]
-								}
-							}
+              {
+                "type":"web_url",
+                "url":"https://www.smile.eu/en",
+                "title":"View Details"
+							},{
+                "type":"postback",
+                "title":"Check Other Products",
+                "payload":"other"
+              }
 						]
 					}
-				]
+        ]
+      }
+    }
+	}
+	sendRequest(sender, messageData)
+}
+
+function sendButtonStickers(sender, text) {
+	let messageData = {
+		"attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+          {
+            "title": "Awesome Stickers",
+            "image_url":"https://ssli.ebayimg.com/images/g/xy8AAOSwyytaotXf/s-l1600.jpg",
+						"subtitle":"We have the right stickers for everyone.",
+						"buttons":[
+              {
+                "type":"web_url",
+                "url":"https://www.smile.eu/en",
+                "title":"View Details"
+							},{
+                "type":"postback",
+                "title":"Check Other Products",
+                "payload":"other"
+              }
+						]
+					}
+        ]
       }
     }
 	}
