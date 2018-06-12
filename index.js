@@ -129,28 +129,7 @@ function sendButtonItem(sender, text) {
 }
 
 function sendButtonBuy(sender, text) {
-	let messageData = {
-		"attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"Try the buy button!",
-        "buttons":[
-          {
-            "type":"payment",
-            "title":"But Button",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD",
-            "payment_summary":{
-              "currency":"USD",
-              "payment_type":"FIXED_AMOUNT",
-              "is_test_payment" : true,
-              "merchant_name":"My Fake Business",
-            }
-          }
-        ]
-      }
-    }
-	}
+	let messageData = "Hhahaah"
 	sendRequest(sender, messageData)
 }
 
