@@ -131,13 +131,29 @@ function sendButtonItem(sender, text) {
 function sendButtonBuy(sender, text) {
 	let messageData = {
 		"attachment":{
-			"type":"template",
+      "type":"template",
       "payload":{
-        "template_type":"button",
-				"text":"Try the buy button!"
-			}
-		}
-
+        "template_type":"generic",
+        "elements":[
+          {
+            "title": "We have the right t-shirts for all code lovers.",
+            "image_url":"https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/26167488_139883043463219_5905871390861314564_n.jpg?_nc_cat=0&oh=87c6678977d536862c165456990810f7&oe=5BA635D3",
+						"subtitle":"We have the right hat for everyone.",
+						"buttons":[
+              {
+                "type":"web_url",
+                "url":"https://www.smile.eu/en",
+                "title":"View Details"
+							},{
+                "type":"postback",
+                "title":"Check Other Products",
+                "payload":"other"
+              }
+						]
+					}
+        ]
+      }
+    }
 	}
 	sendRequest(sender, messageData)
 }
