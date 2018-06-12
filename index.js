@@ -119,6 +119,12 @@ function sendButtonBuy(sender, text) {
                 "title":"Check Other Products",
                 "payload":"other"
               }
+						],
+						"price_list":[
+							{
+								"label":"<EX_SUBTOTAL>",
+								"amount":"<AMOUNT>"
+							}
 						]
 					}
         ]
