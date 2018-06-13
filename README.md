@@ -38,7 +38,9 @@ npm install
 ```
 
 2 - Go to [Facebook for Developers](https://developers.facebook.com/) and Add New App
+
 3 - Set up Messenger
+
 4 - Token Generation : select your facebook page and copy token generated and paste it in *index.js*
 
 ```
