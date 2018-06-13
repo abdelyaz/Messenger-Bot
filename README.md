@@ -75,7 +75,6 @@ Send any message to your facebook page where you set your chatbot and enjoy talk
 
 In this app I used only Postback Button and Generic Template, you can customize the Bot's answears using [Facebook Send API](https://developers.facebook.com/docs/messenger-platform/reference/send-api/)
 
-
 ## Authors
 
 * **Abdelkader EL YAZIDI** - *Front-End developer* - [Abdelyaz](https://github.com/abdelyaz)
